@@ -1,0 +1,314 @@
+/* ─── Fontshare: Clash Display ─── */
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&display=swap");
+
+/* ─── Google Fonts ─── */
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+@import "tailwindcss";
+
+:root {
+  /* ─── Colors ─── */
+  --bg-primary:     #0A0B0E;
+  --bg-surface:     #111318;
+  --bg-elevated:    #1A1E27;
+  --accent-orange:  #F5A623;
+  --accent-glow:    rgba(245, 166, 35, 0.12);
+  --accent-blue:    #4A7FA5;
+  --text-primary:   #F0F2F6;
+  --text-secondary: #8A95A8;
+  --text-muted:     #4E5668;
+  --border-subtle:  rgba(245, 166, 35, 0.15);
+  --glass-bg:       rgba(26, 30, 39, 0.7);
+
+  /* ─── Typography ─── */
+  --font-display:  'Clash Display', sans-serif;
+  --font-heading:  'Syne', sans-serif;
+  --font-body:     'DM Sans', sans-serif;
+  --font-mono:     'JetBrains Mono', monospace;
+
+  /* ─── Spacing ─── */
+  --section-padding: 7rem 2rem;
+  --container-max:   1280px;
+}
+
+/* ─── Reset & Base ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none; /* Custom cursor takes over */
+}
+
+/* ─── Lenis ─── */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-orange);
+  border-radius: 2px;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(245, 166, 35, 0.25);
+  color: var(--text-primary);
+}
+
+/* ─── Typography Scale ─── */
+.font-display  { font-family: var(--font-display); }
+.font-heading  { font-family: var(--font-heading); }
+.font-body     { font-family: var(--font-body); }
+.font-mono     { font-family: var(--font-mono); }
+
+/* ─── Glassmorphism ─── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+}
+
+/* ─── Container ─── */
+.container-main {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ─── Section Label ─── */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--accent-orange);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--accent-orange);
+}
+
+/* ─── Section Title ─── */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+/* ─── Orange Glow ─── */
+.orange-glow {
+  box-shadow: 0 0 30px rgba(245, 166, 35, 0.15), 0 0 60px rgba(245, 166, 35, 0.05);
+}
+
+/* ─── Diagonal Section Dividers ─── */
+.diagonal-top {
+  position: relative;
+}
+.diagonal-top::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: var(--bg-primary);
+  clip-path: polygon(0 0, 100% 0, 100% 30%, 0 100%);
+  z-index: 2;
+}
+
+/* ─── Gradient Text ─── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent-orange), #FFD580);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Orange Underline Hover ─── */
+.nav-link {
+  position: relative;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent-orange);
+  transition: width 0.25s ease;
+}
+.nav-link:hover {
+  color: var(--text-primary);
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ─── Buttons ─── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.75rem;
+  background: var(--accent-orange);
+  color: #0A0B0E;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: none;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  background: #e69610;
+  transform: scale(1.03);
+  box-shadow: 0 8px 30px rgba(245, 166, 35, 0.35);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.75rem;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(240, 242, 246, 0.2);
+  cursor: none;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+.btn-ghost:hover {
+  border-color: var(--accent-orange);
+  background: rgba(245, 166, 35, 0.05);
+  transform: scale(1.03);
+}
+
+/* ─── Pill Tags ─── */
+.pill-tag {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  background: rgba(245, 166, 35, 0.08);
+  color: var(--accent-orange);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  border-radius: 999px;
+  border: 1px solid rgba(245, 166, 35, 0.2);
+  white-space: nowrap;
+}
+
+.pill-tag-blue {
+  background: rgba(74, 127, 165, 0.1);
+  color: var(--accent-blue);
+  border-color: rgba(74, 127, 165, 0.25);
+}
+
+/* ─── Loading Screen ─── */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: #020304;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* ─── Marquee ─── */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee-scroll 30s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Cursor ─── */
+.cursor-dot,
+.cursor-ring {
+  pointer-events: none;
+  position: fixed;
+  z-index: 99999;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+}
