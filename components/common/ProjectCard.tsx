@@ -131,6 +131,7 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
           <div
             style={{
               display: "flex",
+              flexWrap: "wrap",
               gap: "1.5rem",
               paddingTop: "0.5rem",
               borderTop: "1px solid rgba(245,166,35,0.08)",

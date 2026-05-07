@@ -44,7 +44,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           </div>
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: "4rem" }}>
-            <div style={{ flex: "1 1 500px" }}>
+            <div style={{ flex: "1 1 min(100%, 500px)" }}>
               <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "1.5rem", fontWeight: 700, marginBottom: "1.2rem", color: "var(--text-primary)" }}>About the Project</h2>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "1.05rem", color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "2.5rem" }}>
                 {project.description}
@@ -56,7 +56,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               </div>
             </div>
 
-            <div style={{ flex: "1 1 300px" }}>
+            <div style={{ flex: "1 1 min(100%, 300px)" }}>
               <div style={{ background: "var(--bg-elevated)", padding: "2rem", borderRadius: "1.5rem", border: "1px solid var(--border-subtle)" }}>
                 
                 <div style={{ marginBottom: "1.5rem" }}>
