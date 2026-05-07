@@ -3,18 +3,22 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { href: "#work",         label: "Work" },
-  { href: "#services",     label: "Services" },
-  { href: "#about",        label: "About" },
-  { href: "#testimonials", label: "Reviews" },
-  { href: "#contact",      label: "Contact" },
+  { href: "/",             label: "Home" },
+  { href: "/work",         label: "Work" },
+  { href: "/services",     label: "Services" },
+  { href: "/about",        label: "About" },
+  { href: "/testimonials", label: "Reviews" },
+  { href: "/contact",      label: "Contact" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -22,10 +26,8 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = () => {
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -61,24 +63,19 @@ export default function Navbar() {
           }}
         >
           {/* Logo */}
-          <a
-            href="#"
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+          <Link
+            href="/"
+            onClick={() => setMobileOpen(false)}
             style={{ textDecoration: "none" }}
           >
-            <span
-              style={{
-                fontFamily: "var(--font-heading)",
-                fontSize: "1.3rem",
-                fontWeight: 800,
-                letterSpacing: "-0.02em",
-              }}
-            >
-              <span style={{ color: "#F0F2F6" }}>Think</span>
-              <span style={{ color: "#F5A623" }}>To</span>
-              <span style={{ color: "#F0F2F6" }}>Tech</span>
-            </span>
-          </a>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <img
+                src="/logo.png"
+                alt="ThinkToTech Logo"
+                style={{ height: "40px", width: "auto" }}
+              />
+            </div>
+          </Link>
 
           {/* Desktop nav */}
           <div
@@ -90,22 +87,22 @@ export default function Navbar() {
             }}
           >
             {navLinks.map((link) => (
-              <button
+              <Link
                 key={link.href}
+                href={link.href}
                 className="nav-link"
-                onClick={() => handleNavClick(link.href)}
-                style={{ background: "none", border: "none" }}
+                style={{ textDecoration: "none" }}
               >
                 {link.label}
-              </button>
+              </Link>
             ))}
-            <button
+            <Link
+              href="/contact"
               className="btn-primary"
-              style={{ padding: "0.6rem 1.25rem", fontSize: "0.85rem" }}
-              onClick={() => handleNavClick("#contact")}
+              style={{ padding: "0.6rem 1.25rem", fontSize: "0.85rem", textDecoration: "none" }}
             >
               Let's Talk
-            </button>
+            </Link>
           </div>
 
           {/* Mobile hamburger */}
@@ -164,38 +161,45 @@ export default function Navbar() {
               <X size={24} />
             </button>
             {navLinks.map((link, i) => (
-              <motion.button
+              <motion.div
                 key={link.href}
                 initial={{ x: 40, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: i * 0.07, duration: 0.35 }}
-                onClick={() => handleNavClick(link.href)}
-                style={{
-                  background: "none",
-                  border: "none",
-                  color: "#F0F2F6",
-                  fontFamily: "var(--font-heading)",
-                  fontSize: "1.5rem",
-                  fontWeight: 700,
-                  textAlign: "left",
-                  padding: "0.75rem 0",
-                  borderBottom: "1px solid rgba(245,166,35,0.08)",
-                  cursor: "pointer",
-                }}
+                onClick={handleNavClick}
+                style={{ borderBottom: "1px solid rgba(245,166,35,0.08)" }}
               >
-                {link.label}
-              </motion.button>
+                <Link
+                  href={link.href}
+                  style={{
+                    display: "block",
+                    textDecoration: "none",
+                    color: "#F0F2F6",
+                    fontFamily: "var(--font-heading)",
+                    fontSize: "1.5rem",
+                    fontWeight: 700,
+                    padding: "0.75rem 0",
+                  }}
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
             ))}
-            <motion.button
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.45 }}
-              className="btn-primary"
               style={{ marginTop: "1.5rem" }}
-              onClick={() => handleNavClick("#contact")}
+              onClick={handleNavClick}
             >
-              Let's Talk →
-            </motion.button>
+              <Link
+                href="/contact"
+                className="btn-primary"
+                style={{ display: "inline-block", textDecoration: "none" }}
+              >
+                Let's Talk →
+              </Link>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

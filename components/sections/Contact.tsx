@@ -105,7 +105,7 @@ export default function Contact() {
             {/* Contact Info */}
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "2.5rem" }}>
               {[
-                { icon: <Mail size={16} />, label: "hello@thinktotech.dev" },
+                { icon: <Mail size={16} />, label: "thinktotechdev@gmail.com" },
                 { icon: <Phone size={16} />, label: "+91 98765 43210" },
                 { icon: <MapPin size={16} />, label: "Kerala, India · Remote Worldwide" },
               ].map((item, i) => (

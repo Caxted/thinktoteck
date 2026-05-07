@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Project } from "@/data/projects";
 import { ArrowUpRight, Award, Clock, Users } from "lucide-react";
+import Link from "next/link";
 
 // ─── Featured Full-Width Card ───────────────────────────────────────────────
 export function FeaturedProjectCard({ project }: { project: Project }) {
@@ -191,27 +192,29 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
           </div>
 
           {/* CTA */}
-          <motion.button
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              background: "var(--accent-orange)",
-              color: "#0A0B0E",
-              border: "none",
-              borderRadius: "999px",
-              padding: "0.7rem 1.5rem",
-              fontFamily: "var(--font-body)",
-              fontWeight: 600,
-              fontSize: "0.85rem",
-              cursor: "none",
-              width: "fit-content",
-            }}
-          >
-            View Project <ArrowUpRight size={16} />
-          </motion.button>
+          <Link href={`/work/${project.id}`} style={{ textDecoration: "none", width: "fit-content" }}>
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: "var(--accent-orange)",
+                color: "#0A0B0E",
+                border: "none",
+                borderRadius: "999px",
+                padding: "0.7rem 1.5rem",
+                fontFamily: "var(--font-body)",
+                fontWeight: 600,
+                fontSize: "0.85rem",
+                cursor: "none",
+                width: "fit-content",
+              }}
+            >
+              View Project <ArrowUpRight size={16} />
+            </motion.div>
+          </Link>
         </div>
 
         {/* Right: Image */}
@@ -247,8 +250,9 @@ export function GridProjectCard({ project, delay = 0 }: { project: Project; dela
   const [hovered, setHovered] = useState(false);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
+    <Link href={`/work/${project.id}`} style={{ textDecoration: "none", display: "block" }}>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
@@ -349,5 +353,6 @@ export function GridProjectCard({ project, delay = 0 }: { project: Project; dela
         </div>
       </div>
     </motion.div>
+    </Link>
   );
 }

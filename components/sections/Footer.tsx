@@ -32,17 +32,12 @@ export default function Footer() {
         >
           {/* Logo */}
           <div>
-            <div
-              style={{
-                fontFamily: "var(--font-heading)",
-                fontSize: "1.5rem",
-                fontWeight: 800,
-                letterSpacing: "-0.02em",
-              }}
-            >
-              <span style={{ color: "#F0F2F6" }}>Think</span>
-              <span style={{ color: "#F5A623" }}>To</span>
-              <span style={{ color: "#F0F2F6" }}>Tech</span>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <img
+                src="/logo.png"
+                alt="ThinkToTech Logo"
+                style={{ height: "40px", width: "auto" }}
+              />
             </div>
             <div
               style={{
@@ -149,7 +144,7 @@ export default function Footer() {
               letterSpacing: "0.05em",
             }}
           >
-            hello@thinktotech.dev
+            thinktotechdev@gmail.com
           </span>
         </div>
       </div>
