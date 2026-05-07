@@ -55,23 +55,9 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
         cursor: "none",
       }}
     >
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          minHeight: "420px",
-        }}
-      >
+      <div className="featured-project-grid">
         {/* Left: Content */}
-        <div
-          style={{
-            padding: "3rem",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.25rem",
-            justifyContent: "center",
-          }}
-        >
+        <div className="featured-project-content">
           {/* Award badge */}
           {project.award && (
             <div
@@ -218,7 +204,7 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
         </div>
 
         {/* Right: Image */}
-        <div style={{ position: "relative", overflow: "hidden" }}>
+        <div className="featured-project-image-container">
           <motion.img
             src={project.imageUrl}
             alt={project.title}
@@ -232,13 +218,7 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
             }}
           />
           {/* Image overlay */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background: "linear-gradient(to right, var(--bg-elevated) 0%, transparent 30%)",
-            }}
-          />
+          <div className="featured-project-image-overlay" />
         </div>
       </div>
     </motion.div>

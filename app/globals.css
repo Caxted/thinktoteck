@@ -312,3 +312,47 @@ html.lenis {
     display: none;
   }
 }
+
+/* ─── Featured Project Responsive ─── */
+.featured-project-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 420px;
+}
+
+.featured-project-content {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  justify-content: center;
+}
+
+.featured-project-image-container {
+  position: relative;
+  overflow: hidden;
+  min-height: 100%;
+}
+
+.featured-project-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--bg-elevated) 0%, transparent 30%);
+}
+
+@media (max-width: 900px) {
+  .featured-project-grid {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .featured-project-content {
+    padding: 2rem 1.5rem;
+  }
+  .featured-project-image-container {
+    height: 250px;
+    min-height: 250px;
+  }
+  .featured-project-image-overlay {
+    background: linear-gradient(to bottom, transparent 60%, var(--bg-elevated) 100%);
+  }
+}
